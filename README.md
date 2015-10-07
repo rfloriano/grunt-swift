@@ -21,10 +21,33 @@ $ npm install --save grunt-swift
 
 ## Usage
 
-```js
-var gruntSwift = require('grunt-swift');
-gruntSwift('Rainbow');
 ```
+  # Gruntfile
+  
+  grunt.initConfig
+    swift:
+      options:
+        credentials:
+          auth:
+            tenantName: 'my-tenant'
+            passwordCredentials:
+              username: 'my-user'
+              password: 'my-pass'
+          container: 'my-container'
+          storageName: 'my-storage-name'
+          storageURLAttribute: 'my-storage-url-attribute'
+          storagePath: 'my-storage-path'
+        path: '<%= config.dist %>/**/*.*'  # my pattern
+      dev:
+        options:
+          credentials:
+            host: 'https://my-auth-host-for-dev.com'
+      prod:
+        options:
+          credentials:
+            host: 'https://my-auth-host-for-prod.com'
+```
+
 
 ## License
 
