@@ -1,0 +1,40 @@
+{
+  "name": "grunt-swift",
+  "version": "0.0.1",
+  "description": "Module for globo.com swift",
+  "bugs": "https://github.com/rfloriano/grunt-swift/issues",
+  "license": "MIT",
+  "main": "index.js",
+  "author": "Rafael Floriano da Silva <rflorianobr@gmail.com>",
+  "files": [
+    "index.js",
+    "tasks",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rfloriano/grunt-swift"
+  },
+  "keywords": [
+    "grunt-swift"
+  ],
+  "dependencies": {
+    "async": "^1.4.2",
+    "config": "^1.15.0",
+    "glob": "^5.0.14",
+    "node-config": "0.0.2",
+    "openstack-storage": "git://github.com/kplaube/openstack-storage.git#master"
+  },
+  "devDependencies": {
+    "tape": "^4.0.1",
+    "tap-spec": "^4.0.2",
+    "gaze-cli": "^0.2.0",
+    "standard": "^4.5.0"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "node test/index.js | tap-spec",
+    "test:watch": "gaze 'npm test' 'test/**/*.js' 'tasks/**/*.js' 'index.js'",
+    "start": "npm run test:watch"
+  }
+}
