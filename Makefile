@@ -9,7 +9,8 @@ clean:
 	rm -rf lib/ test/*.js
 
 build:
-	coffee -o tasks/ -c src/
+	coffee -o tasks/ -c src/grunt-swift.coffee
+	coffee -o lib/ -c src/swift.coffee
 
 test:
 	nodeunit test/refix.js

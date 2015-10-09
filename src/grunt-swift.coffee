@@ -1,5 +1,5 @@
 'use strict'
-Swift = require('./swift')
+Swift = require('../lib/swift')
 
 module.exports = (grunt) ->
   grunt.registerMultiTask('swift', 'do swift upload', () ->

@@ -3,7 +3,7 @@
   'use strict';
   var Swift;
 
-  Swift = require('./swift');
+  Swift = require('../lib/swift');
 
   module.exports = function(grunt) {
     return grunt.registerMultiTask('swift', 'do swift upload', function() {
