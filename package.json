@@ -7,9 +7,10 @@
   "main": "index.js",
   "author": "Rafael Floriano da Silva <rflorianobr@gmail.com>",
   "files": [
-    "index.js",
-    "tasks",
-    "LICENSE"
+    "index.coffee",
+    "lib",
+    "src",
+    "README.md"
   ],
   "repository": {
     "type": "git",
