@@ -2,6 +2,7 @@ async = require('async')
 glob = require('glob')
 storage = require('openstack-storage')
 path = require('path')
+fs = require('fs')
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0' # Temos certificados não assinados no Swift dos ambientes :/
 
@@ -16,23 +17,23 @@ class SwiftUpload
       cb(@)
     )
 
-  uploadFiles: (path, cb) ->
-    glob(path, (err, files) =>
-      counter = 0
-      for file in files
-        @uploadFile(file, () ->
-          counter += 1
-        )
-      setInterval(() =>
-        cb() if counter == files.length
-      , 200)
-    )
+  uploadFiles: (paths, cb) ->
+    paths = [paths] if not Array.isArray(paths)
+    for p in paths
+      glob(p, (err, files) =>
+        counter = 0
+        for file in files
+          continue if fs.lstatSync(file).isDirectory()
+          @uploadFile(file, () ->
+            counter += 1
+          )
+        setInterval(() =>
+          cb() if counter == files.length
+        , 200)
+      )
 
   uploadFile: (filename, cb) ->
-    remoteName = filename
-
-    if @options.storagePath?
-      remoteName = path.join(@options.storagePath, filename.split('/').pop())
+    remoteName = path.join(@options.storagePath, filename)
 
     putFileOptions =
       remoteName: remoteName
