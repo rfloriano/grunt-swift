@@ -1,9 +1,9 @@
 PATH := ./node_modules/.bin:${PATH}
 
-.PHONY : init clean build test dist publish
+.PHONY : setup clean build test dist publish
 
-init:
-	npm install
+setup:
+	@npm install
 
 clean:
 	rm -rf lib/ test/*.js
@@ -15,7 +15,7 @@ build:
 test:
 	nodeunit test/refix.js
 
-dist: clean init build test
+dist: clean setup build test
 
 publish: dist
 	npm publish --registry https://artifactory.globoi.com/artifactory/api/npm/npm-local .
