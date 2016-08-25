@@ -1,6 +1,6 @@
 {
   "name": "grunt-swift",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Module for globo.com swift",
   "bugs": "https://github.com/rfloriano/grunt-swift/issues",
   "license": "MIT",
