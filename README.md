@@ -37,7 +37,8 @@ $ npm install --save grunt-swift
           storageName: 'my-storage-name'
           storageURLAttribute: 'my-storage-url-attribute'
           storagePath: 'my-storage-path'
-        path: '<%= config.dist %>/**/*.*'  # my pattern
+        localFile: '<%= config.dist %>/**/*.*'  # my pattern
+
       dev:
         options:
           credentials:
