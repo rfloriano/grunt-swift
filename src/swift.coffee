@@ -12,9 +12,12 @@ class SwiftUpload
     @logger = logger || console.log
     authFn = async.apply(storage.authenticate, @options)
     @service = new storage.OpenStackStorage(authFn, (err, res, tokens) =>
-      @tokens = tokens
-      @logger('[Swift Auth] ' + res.statusCode + ' - ' + tokens.id)
-      cb(@)
+      if err
+        @logger('[Swift Auth] ', err, ', tokens: ', tokens)
+      else
+        @tokens = tokens
+        @logger('[Swift Auth] ' + res.statusCode + ' - ' + tokens.id)
+        cb(@)
     )
 
   uploadFiles: (paths, cb) ->
