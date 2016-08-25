@@ -1,6 +1,6 @@
-# grunt-swift 
+# grunt-swift
 
-[![Build Status][travis-image]][travis-url] [![npm][npm-image]][npm-url] 
+[![Build Status][travis-image]][travis-url] [![npm][npm-image]][npm-url]
 
 [travis-image]: https://travis-ci.org/rflorianobr/grunt-swift.svg?branch=master
 [travis-url]: https://travis-ci.org/rflorianobr/grunt-swift
@@ -23,7 +23,7 @@ $ npm install --save grunt-swift
 
 ```
   # Gruntfile
-  
+
   grunt.initConfig
     swift:
       options:
