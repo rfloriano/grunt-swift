@@ -23,24 +23,20 @@ class SwiftUpload
   uploadFiles: (paths, cb) ->
     paths = [paths] if not Array.isArray(paths)
     for p in paths
-      glob(p, (err, files) =>
-        counter = 0
-        for file in files
-          continue if fs.lstatSync(file).isDirectory()
-          @uploadFile(file, () ->
-            counter += 1
-          )
-        setInterval(() =>
-          cb() if counter == files.length
-        , 200)
+      counter = 0
+      @uploadFile(p, () ->
+          counter += 1
       )
+    setInterval(() =>
+      cb() if counter == paths.length
+    , 200)
 
-  uploadFile: (filename, cb) ->
-    remoteName = path.join(@options.storagePath, filename)
+  uploadFile: (file, cb) ->
+    remoteName = path.join(@options.storagePath, file.remoteName)
 
     putFileOptions =
       remoteName: remoteName
-      localFile: filename
+      localFile: file.localFile
 
     @service.putFile(@options.container, putFileOptions, (err, statusCode) =>
       url = @tokens.storageUrl + path.join('/', @options.container, remoteName)

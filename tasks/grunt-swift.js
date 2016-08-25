@@ -19,7 +19,7 @@
         throw new Error('Config options.credentials is required in Gruntfile');
       }
       return new Swift(options.credentials, grunt.log.writeln, function(swift) {
-        return swift.uploadFiles(options.path, done);
+        return swift.uploadFiles(options, done);
       });
     });
   };
