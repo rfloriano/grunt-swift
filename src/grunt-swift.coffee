@@ -13,6 +13,6 @@ module.exports = (grunt) ->
     if not options.credentials
       throw new Error('Config options.credentials is required in Gruntfile')
     new Swift(options.credentials, grunt.log.writeln, (swift) ->
-      swift.uploadFiles(options, done)
+      swift.uploadFiles(grunt.file.expand(options.localFile), done)
     )
   )
