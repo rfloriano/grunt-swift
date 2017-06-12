@@ -32,11 +32,11 @@ class SwiftUpload
     , 200)
 
   uploadFile: (file, cb) ->
-    remoteName = path.join(@options.storagePath, file.remoteName or file.localFile)
+    remoteName = path.join(@options.storagePath, file)
 
     putFileOptions =
       remoteName: remoteName
-      localFile: file.localFile
+      localFile: file
 
     @service.putFile(@options.container, putFileOptions, (err, statusCode) =>
       url = @tokens.storageUrl + path.join('/', @options.container, remoteName)
